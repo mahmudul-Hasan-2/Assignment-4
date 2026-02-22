@@ -45,11 +45,13 @@
                 <p><span id="count">0</span> Jobs</p>
             </div>
             <div class="second">
-                <button class="btn" id="all-btn" onclick="getShow('all-section');">All</button>
-                <button class="btn" id="interview-btn" onclick="getShow('interview-section');">Interview</button>
-                <button class="btn" id="rejected-btn" onclick="getShow('rejected-section');">Rejected</button>
+                <button onclick="toggleStyle('all-btn')" class="btn btn-color" id="all-btn">All</button>
+                <button onclick="toggleStyle('interview-btn')" class="btn btn-color" id="interview-btn">Interview</button>
+                <button onclick="toggleStyle('rejected-btn')" class="btn btn-color" id="rejected-btn">Rejected</button>
             </div>
         </div>
+
+        
         <div class="not-available-container hidden" id="not-available">
             <div class="not-available-box">
                 <img src="jobs.png" alt="">
@@ -58,12 +60,12 @@
             </div>
         </div>
 
-        <div id="all-section">
+        <section id="all-section">
             <div class="box">
                 <div class="header-content">
                     <div class="left">
-                        <h3>Mobile First Corp</h3>
-                        <p>React Native Developer</p>
+                        <h3 class="job-name">Mobile First Corp</h3>
+                        <p class="post-name">React Native Developer</p>
                     </div>
                     <div class="right">
                         <i class="fa-regular fa-trash-can delete-button"></i>
@@ -74,7 +76,7 @@
 
                 <div class="footer-content">
                     <button class="btn-applied">Not Applied</button>
-                    <p>Build cross-platform mobile applications using React Native. Work on products used by millions of
+                    <p class="footer-content-info">Build cross-platform mobile applications using React Native. Work on products used by millions of
                         users worldwide.</p>
                 </div>
 
@@ -106,7 +108,7 @@
                     <button class="interview">INTERVIEW</button>
                     <button class="rejected">REJECTED</button>
                 </div>
-            </div> -->
+            </div>
             <div class="box">
                 <div class="header-content">
                     <div class="left">
@@ -255,7 +257,7 @@
                     <button class="rejected">REJECTED</button>
                 </div>
             </div>
-        </div>
+        </section>
         <div id="interview-section" class="hidden">
             <div class="not-available-box">
                 <img src="jobs.png" alt="">

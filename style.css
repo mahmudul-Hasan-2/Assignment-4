@@ -71,6 +71,18 @@ nav h2 {
     cursor: pointer;
 }
 
+.add-btn {
+    background: #3B82F6;
+    color: white;
+}
+
+.btn-color {
+    background: #D1D5DB;
+    color: black;
+    transition: .5s ease-out;
+}
+
+
 .not-available-container {
     display: flex;
     align-items: center;
