@@ -10,8 +10,10 @@ let interviewButton = document.getElementById('interview-btn');
 let rejectedButton = document.getElementById('rejected-btn');
 let count = document.getElementById('count');
 let rightDeleteButton = document.getElementsByClassName('right');
+let notAvailableContainer = document.querySelector('not-available-container');
 
 const allSection = document.getElementById('all-section');
+
 
 let allSectionContainer = document.querySelector('section');
 const filterSection = document.getElementById('filtered-section')
@@ -100,8 +102,8 @@ function toggleStyle(id) {
     console.log(rightDeleteButton);
     for (let rightDelete of rightDeleteButton) {
         rightDelete.addEventListener('click', function (event) {
-            console.log(event.target);            
-            console.log(rightDelete);            
+            console.log(event.target);
+            console.log(rightDelete);
             let parent = event.target.closest('.box');
             console.log(parent);
             parent.remove();
@@ -156,6 +158,7 @@ allSectionContainer.addEventListener('click', function (event) {
             interviewList.push(cardInfo);
         }
 
+
         rejectedList = rejectedList.filter(item => item.jobName != cardInfo.jobName);
 
         if (currentStatus === "rejected-btn") {
@@ -189,10 +192,12 @@ allSectionContainer.addEventListener('click', function (event) {
         parentNode.querySelector('.btn-applied').innerText = "Rejected";
         parentNode.querySelector('.btn-applied').style.border = "2px solid #ff0000cc";
         parentNode.querySelector('.btn-applied').style.color = "#b91010c9";
-
+        
         if (!jobExist) {
             rejectedList.push(cardInfo);
         }
+
+
 
         interviewList = interviewList.filter(item => item.jobName != cardInfo.jobName);
         if (currentStatus === "interview-btn") {
