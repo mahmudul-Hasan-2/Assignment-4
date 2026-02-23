@@ -17,7 +17,7 @@ const interviewSection = document.getElementById('interview-section');
 const rejectedSection = document.getElementById('rejected-section');
 
 let allSectionContainer = document.querySelector('section');
-const filterSection = document.getElementById('filtered-section')
+const filterSection = document.getElementById('filtered-section');
 
 
 function countAll() {
@@ -213,12 +213,6 @@ allSectionContainer.addEventListener('click', function (event) {
         interviewList = interviewList.filter(item => item.jobName != cardInfo.jobName);
         if (currentStatus === "interview-btn") {
             renderInterview();
-        }
-
-        if (currentStatus.classList.contains('hidden')) {
-            currentStatus.classList.remove('hidden');
-        } else {
-            currentStatus.classList.remove('hidden');
         }
 
         countAll();
