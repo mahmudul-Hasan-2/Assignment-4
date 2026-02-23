@@ -11,10 +11,7 @@ querySelectorAll: That will get elements by Id, class, tagName and The advantage
 ---
 3. What is Event Bubbling? And how does it work?
 3. ans: The bubbling system is a funny way to find the parent to grand parent to document think about a button first time you give eventListener to the button and if someone will click on the button that will print "Button Clicked" and after that you give a eventLister to the body will someone click on the body that'll print "Body clicked" and after that will you give a eventListener to document and print "Document clicked" The full process is:
-| GrandParent |
-|----------|
-|  Parent  |
-|  child   |
+GrandParent < parent < child
 ---
 4. What is Event Delegation in JavaScript? Why is it useful?
 4. ans: The Event delegation is something similar with the addEventListener, Think about that: if I wanna give a eventListener to 10 or more li I I need to write event listener 10 time or more The delegation is help us to short the work we can give eventListener to 10 li by 2 line of code.
