@@ -27,7 +27,7 @@ header {
 }
 
 nav h2 {
-    font-size: 32px;
+    font-size: 2em;
     font-weight: 700;
     color: #002C5C;
     margin-bottom: 20px;
@@ -44,6 +44,7 @@ nav h2 {
     background: white;
     border: 1px solid #F1F2F4;
     border-radius: 8px;
+    height: 110px;
 }
 
 .box p {
@@ -203,4 +204,56 @@ nav h2 {
 /* Hidden */
 .hidden {
     display: none;
+}
+
+/* Responsive */
+@media screen and (max-width:1025px) and (min-width:768px) {
+    .container {
+        width: 81%;
+    }
+
+    nav h2 {
+        font-size: 1.6rem;
+    }
+
+    .box-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .second {
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .container {
+        width: 94%;
+    }
+
+    nav h2 {
+        font-size: 1.3rem;
+    }
+
+    .box-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .job-name {
+        font-size: 17px;
+    }
+
+    .post-name {
+        font-size: 16px;
+    }
+
+    .second {
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .title {
+        font-size: 12px;
+    }
 }

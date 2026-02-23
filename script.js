@@ -9,6 +9,7 @@ let allButton = document.getElementById('all-btn');
 let interviewButton = document.getElementById('interview-btn');
 let rejectedButton = document.getElementById('rejected-btn');
 let count = document.getElementById('count');
+let rightDeleteButton = document.getElementsByClassName('right');
 
 const allSection = document.getElementById('all-section');
 
@@ -23,6 +24,29 @@ function countAll() {
 }
 
 countAll();
+
+for (let rightDelete of rightDeleteButton) {
+    rightDelete.addEventListener('click', function (event) {
+        let parent = event.target.closest('.box');
+        parent.remove();
+
+        const jobName = parent.querySelector('.job-name').innerText;
+        interviewList = interviewList.filter(item => item.jobName !== jobName);
+        rejectedList = rejectedList.filter(item => item.jobName !== jobName);
+
+        countAll();
+
+        if (currentStatus === 'all-btn') {
+            count.innerText = allSection.children.length;
+        } else if (currentStatus === 'interview-btn') {
+            count.innerText = interviewList.length;
+            renderInterview();
+        } else if (currentStatus === 'rejected-btn') {
+            count.innerText = rejectedList.length;
+            renderRejected();
+        }
+    });
+}
 
 allButton.addEventListener('click', function () {
     count.innerText = allSection.children.length;
@@ -71,11 +95,38 @@ function toggleStyle(id) {
         filterSection.style.display = "block";
         renderRejected();
     }
+
+    rightDeleteButton = document.getElementsByClassName('right');
+    console.log(rightDeleteButton);
+    for (let rightDelete of rightDeleteButton) {
+        rightDelete.addEventListener('click', function (event) {
+            console.log(event.target);            
+            console.log(rightDelete);            
+            let parent = event.target.closest('.box');
+            console.log(parent);
+            parent.remove();
+            const jobName = parent.querySelector('.job-name').innerText;
+            interviewList = interviewList.filter(item => item.jobName !== jobName);
+            rejectedList = rejectedList.filter(item => item.jobName !== jobName);
+
+            countAll();
+
+            if (currentStatus === 'all-btn') {
+                count.innerText = allSection.children.length;
+            } else if (currentStatus === 'interview-btn') {
+                count.innerText = interviewList.length;
+                renderInterview();
+            } else if (currentStatus === 'rejected-btn') {
+                count.innerText = rejectedList.length;
+                renderRejected();
+            }
+        });
+    }
 }
 
+console.log(rightDeleteButton);
+
 allSectionContainer.addEventListener('click', function (event) {
-    console.log(event.target.classList.contains("interview"));
-    console.log(event.target.classList.contains("right"));
     if (event.target.classList.contains("interview")) {
         const parentNode = event.target.parentNode.parentNode;
         const jobName = parentNode.querySelector('.job-name').innerText;
@@ -158,6 +209,7 @@ function renderInterview() {
     for (let interview of interviewList) {
         console.log(interview);
         let div = document.createElement('div');
+        div.classList.add('box');
         div.style.padding = '24px';
         div.style.border = '1px solid #F1F2F4';
         div.style.borderRadius = '8px';
@@ -195,6 +247,7 @@ function renderRejected() {
     for (let rejected of rejectedList) {
         console.log(rejected);
         let div = document.createElement('div');
+        div.classList.add('box');
         div.style.padding = '24px';
         div.style.border = '1px solid #F1F2F4';
         div.style.borderRadius = '8px';
