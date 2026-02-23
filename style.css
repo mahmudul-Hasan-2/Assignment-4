@@ -256,4 +256,8 @@ nav h2 {
     .title {
         font-size: 12px;
     }
+
+    .not-available-box {
+        padding: 40px;
+    }
 }

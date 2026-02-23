@@ -1,6 +1,26 @@
 1. What is the difference between getElementById, getElementsByClassName, and querySelector / querySelectorAll?
-1. ans: The getElementById is a most important for getting a singular element like If we wanna get a single Item like a Div there If I want to give a unique color or another styles we can use Id specially and that have some disadvantage like we can't set it in multiple element, we can't get it without Id
+1. ans: getElementById: The getElementById is a most important for getting a singular element like If I wanna get a single Item like a Div there If I want to give a unique color or another styles I can use Id and we don't need to use the # sing, specially and that have some disadvantage like I can't set it in multiple element, and we can't anything without Id, and.
+getElementsByClassName : The getElementsByClassName is use for getting multiple elements by className and that will I set multiple elements class inside of a container we can select the multiple elements by document.getElementsByClassName("class name") not necessary to use the dot and if I set multiple elements like 2 more and If I wanna give them eventListener I must need to looping and That have some disadvantage like: That just only returning HTML collection, That is update the data automatically sometime that will can be problem. and 
+--
+querySelector: the querySelector is getting element by CSS selectors like : ., and # and which class and ID will and just by tagName you give here no matter there will be multiple element that will just select the first element which will match with the IdName with # sing and ClassName with . sing and without any sign just by tag Name and that have some disadvantage like : That just get the first item not multiple items, this one speed is is few than getElementById and the querySelectorAll is. and
+--
+querySelectorAll: That will get elements by Id, class, tagName and The advantage is we can get Multiple elements by this one and we can use the forEach for this one, and that always return the nodeList, and Its performance will can be slow when will I want to get the complex Class selector.
+--
 2. How do you create and insert a new element into the DOM?
+2. ans: I can create a tag and element by createElement('New TagName') and variableName.innerText = "", and I can insert it by appendChild().
+--
 3. What is Event Bubbling? And how does it work?
+3. ans: The bubbling system is a funny way to find the parent to grand parent to document think about a button first time you give eventListener to the button and if someone will click on the button that will print "Button Clicked" and after that you give a eventLister to the body will someone click on the body that'll print "Body clicked" and after that will you give a eventListener to document and print "Document clicked" The full process is:
+| document |
+| ↑ |
+| grandparent |
+| ↑ |
+| parent |
+| ↑ |
+| Child |
+--
 4. What is Event Delegation in JavaScript? Why is it useful?
+4. ans: The Event delegation is something similar with the addEventListener, Think about that: if I wanna give a eventListener to 10 or more li I I need to write event listener 10 time or more The delegation is help us to short the work we can give eventListener to 10 li by 2 line of code.
+--
 5. What is the difference between preventDefault() and stopPropagation() methods?
+5. ans: The difference is: the PreventDefault() is prevent a link to in another website or link and the stopPropagation() is stop event to go upward.

@@ -10,10 +10,11 @@ let interviewButton = document.getElementById('interview-btn');
 let rejectedButton = document.getElementById('rejected-btn');
 let count = document.getElementById('count');
 let rightDeleteButton = document.getElementsByClassName('right');
-let notAvailableContainer = document.querySelector('not-available-container');
+let notAvailableContainer = document.querySelector('.not-available-container');
 
 const allSection = document.getElementById('all-section');
-
+const interviewSection = document.getElementById('interview-section');
+const rejectedSection = document.getElementById('rejected-section');
 
 let allSectionContainer = document.querySelector('section');
 const filterSection = document.getElementById('filtered-section')
@@ -52,14 +53,24 @@ for (let rightDelete of rightDeleteButton) {
 
 allButton.addEventListener('click', function () {
     count.innerText = allSection.children.length;
+    if (allSection.children.length > 0) {
+        notAvailableContainer.classList.add('hidden');
+        allSection.classList.remove('hidden');
+    } else {
+        notAvailableContainer.classList.remove('hidden');
+        allSection.classList.add('hidden');
+    }
 });
+
 
 interviewButton.addEventListener('click', function () {
     count.innerText = filterSection.children.length;
+    notAvailableContainer.classList.add('hidden');
 });
 
 rejectedButton.addEventListener('click', function () {
     count.innerText = filterSection.children.length;
+    notAvailableContainer.classList.add('hidden');
 });
 
 function toggleStyle(id) {
@@ -192,7 +203,7 @@ allSectionContainer.addEventListener('click', function (event) {
         parentNode.querySelector('.btn-applied').innerText = "Rejected";
         parentNode.querySelector('.btn-applied').style.border = "2px solid #ff0000cc";
         parentNode.querySelector('.btn-applied').style.color = "#b91010c9";
-        
+
         if (!jobExist) {
             rejectedList.push(cardInfo);
         }
@@ -202,6 +213,12 @@ allSectionContainer.addEventListener('click', function (event) {
         interviewList = interviewList.filter(item => item.jobName != cardInfo.jobName);
         if (currentStatus === "interview-btn") {
             renderInterview();
+        }
+
+        if (currentStatus.classList.contains('hidden')) {
+            currentStatus.classList.remove('hidden');
+        } else {
+            currentStatus.classList.remove('hidden');
         }
 
         countAll();
