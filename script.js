@@ -4,7 +4,6 @@ let currentStatus = 'all';
 let allCount = document.getElementById('all-count');
 let interviewCount = document.getElementById('interview-count');
 let rejectedCount = document.getElementById('rejected-count');
-
 let allButton = document.getElementById('all-btn');
 let interviewButton = document.getElementById('interview-btn');
 let rejectedButton = document.getElementById('rejected-btn');
@@ -100,9 +99,11 @@ function toggleStyle(id) {
         allSection.style.display = "none";
         filterSection.style.display = "block";
         renderInterview();
+        console.log(notAvailableContainer);
     } else if (id === "all-btn") {
         allSection.style.display = "block";
         filterSection.style.display = "none";
+        notAvailableContainer.style.display = "none";
     } else if (id === "rejected-btn") {
         allSection.style.display = "none";
         filterSection.style.display = "block";
@@ -160,7 +161,6 @@ allSectionContainer.addEventListener('click', function (event) {
             interview,
             rejected
         }
-
         const jobExist = interviewList.find(item => item.jobName === cardInfo.jobName);
         parentNode.querySelector('.btn-applied').innerText = "Interview";
         parentNode.querySelector('.btn-applied').style.border = "2px solid #10B981";
@@ -168,7 +168,6 @@ allSectionContainer.addEventListener('click', function (event) {
         if (!jobExist) {
             interviewList.push(cardInfo);
         }
-
 
         rejectedList = rejectedList.filter(item => item.jobName != cardInfo.jobName);
 
@@ -221,16 +220,21 @@ allSectionContainer.addEventListener('click', function (event) {
 
 function renderInterview() {
     filterSection.innerHTML = "";
-
-    for (let interview of interviewList) {
-        console.log(interview);
-        let div = document.createElement('div');
-        div.classList.add('box');
-        div.style.padding = '24px';
-        div.style.border = '1px solid #F1F2F4';
-        div.style.borderRadius = '8px';
-        div.style.marginBottom = '16px';
-        div.innerHTML = `
+    if (interviewList.length <= 0) {
+        // notAvailableContainer.classList.remove('hidden');
+        // filterSection.appendChild(notAvailableContainer);
+        // filterSection.classList.remove('hidden');
+        notAvailableContainer.style.display = "block";
+    } else {
+        for (let interview of interviewList) {
+            console.log(interview);
+            let div = document.createElement('div');
+            div.classList.add('box');
+            div.style.padding = '24px';
+            div.style.border = '1px solid #F1F2F4';
+            div.style.borderRadius = '8px';
+            div.style.marginBottom = '16px';
+            div.innerHTML = `
         <div class="header-content">
                     <div class="left">
                         <h3 class="job-name">${interview.jobName}</h3>
@@ -254,21 +258,25 @@ function renderInterview() {
                     <button class="rejected">REJECTED</button>
                 </div>
         `
-        filterSection.appendChild(div);
+            notAvailableContainer.style.display = "none";
+            filterSection.appendChild(div);
+        }
     }
 }
 function renderRejected() {
     filterSection.innerHTML = "";
-
-    for (let rejected of rejectedList) {
-        console.log(rejected);
-        let div = document.createElement('div');
-        div.classList.add('box');
-        div.style.padding = '24px';
-        div.style.border = '1px solid #F1F2F4';
-        div.style.borderRadius = '8px';
-        div.style.marginBottom = '16px';
-        div.innerHTML = `
+    if (rejectedList.length <= 0) {
+        notAvailableContainer.style.display = "block";
+    } else {
+        for (let rejected of rejectedList) {
+            console.log(rejected);
+            let div = document.createElement('div');
+            div.classList.add('box');
+            div.style.padding = '24px';
+            div.style.border = '1px solid #F1F2F4';
+            div.style.borderRadius = '8px';
+            div.style.marginBottom = '16px';
+            div.innerHTML = `
         <div class="header-content">
                     <div class="left">
                         <h3 class="job-name">${rejected.jobName}</h3>
@@ -292,6 +300,8 @@ function renderRejected() {
                     <button class="rejected">REJECTED</button>
                 </div>
         `;
-        filterSection.appendChild(div);
+            notAvailableContainer.style.display = "none";
+            filterSection.appendChild(div);
+        }
     }
 }
